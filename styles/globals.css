@@ -1,0 +1,59 @@
+/* ./styles/globals.css */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@components {
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+.home-cover {
+  background-image: url("../public/space.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom left;
+}
+.iss-cover {
+  background-image: url("../public/iss.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top right;
+}
+
+@keyframes float {
+  0% {
+    /* box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6); */
+    transform: translatey(0px);
+  }
+  50% {
+    /* box-shadow: 0 25px 15px 0px rgba(0, 0, 0, 0.2); */
+    transform: translatey(10px);
+  }
+  100% {
+    /* box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6); */
+    transform: translatey(0px);
+  }
+}
+
+#space {
+  transform: translatey(0px);
+  animation: float 4s ease-in-out infinite;
+  /* box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6); */
+}
+
+@layer base {
+  @font-face {
+    font-family: "Poppins";
+  }
+}
