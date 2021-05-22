@@ -1,3 +1,30 @@
+# Antariksh 🚀 : A virtual space world
+
+![](https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=next-dot-js&logoColor=white)
+![](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
+
+# Stack
+
+✨ NextJS with Server Side Rendering (SSR) and Static Site Generation (SSG) methods.
+✨ Tailwind CSS for the UI components design.
+✨ NASA API for fetching astronomy picture of the day and other topic images .
+
+# Video
+
+![](https://i.imgur.com/BlkwjF3.mp4)
+
+# Screenshots
+
+- Homepage  
+  ![](https://i.imgur.com/4s7dpmB.png)
+- ISS Crew  
+  ![](https://i.imgur.com/txLtrAx.png)
+- Search Page  
+  ![](https://i.imgur.com/O0dXTiK.png)
+- Astronomy Picture of the Day  
+  ![](https://i.imgur.com/5YeEQAG.png)
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
