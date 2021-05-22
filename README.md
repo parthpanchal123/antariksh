@@ -6,13 +6,10 @@
 
 # Stack
 
-✨ NextJS with Server Side Rendering (SSR) and Static Site Generation (SSG) methods.
-✨ Tailwind CSS for the UI components design.
+✨ NextJS with Server Side Rendering (SSR) and Static Site Generation (SSG) methods.  
+✨ Tailwind CSS for the UI components design.  
 ✨ NASA API for fetching astronomy picture of the day and other topic images .
 
-# Video
-
-![](https://i.imgur.com/BlkwjF3.mp4)
 
 # Screenshots
 
