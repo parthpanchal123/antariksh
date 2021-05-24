@@ -101,7 +101,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <footer class="h-8 bottom-0 mt-1 fixed w-screen text-white text-center text-md italic">
+      <footer className="h-8 bottom-0 mt-1 fixed w-screen text-white text-center text-md italic">
         Made with 💙 by -{" "}
         <a
           target="_blank"
