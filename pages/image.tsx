@@ -1,9 +1,16 @@
 import axios from "axios";
+import { GetServerSidePropsContext } from "next";
 import Head from "next/head";
 import Image from "next/image";
-import Link from "next/link";
+import { useRouter } from "next/router";
+import { specific_image_props } from "../types/types";
 
-export default function ImageInfo({ image_list, more_data, error }) {
+export default function ImageInfo({
+  image_list,
+  more_data,
+  error,
+}: specific_image_props) {
+  const router = useRouter();
   if (error)
     return (
       <div className="container h-full w-96 flex flex-col justify-center m-auto mt-52">
@@ -65,17 +72,25 @@ export default function ImageInfo({ image_list, more_data, error }) {
         <h1 className="font-body text-center  font-bold text-lg">Antariksh</h1>
       </header>
       <div className="container m-auto py-5 w-full h-full">
-        <div className="mt-12">
-          <Link href="/">
-            <a className="text-sm text-center underline ml-2 text-black">
-              {" "}
-              Go back
-            </a>
-          </Link>
+        <div className="mt-2">
+          <span
+            className="text-sm text-center underline ml-2 text-black cursor-pointer"
+            onClick={() => router.back()}
+          >
+            {" "}
+            Go back
+          </span>
         </div>
         <div className="flex flex-col flex-wrap m-5 items-center space-y-5 mt-5 ">
           <div className="max-w-sm text-center ">
-            <img src={image_list[2].href} className="rounded-lg"></img>
+            <span className="text-xs mb-4">
+              Tap on the image for HD version
+            </span>
+            <img
+              src={image_list[0].href}
+              className="rounded-lg cursor-pointer"
+              onClick={() => router.push(image_list[0].href)}
+            ></img>
 
             <p className="flex flex-wrap flex-row-reverse justify-center my-2 text-lg font-bold">
               {more_data.title}
@@ -90,7 +105,7 @@ export default function ImageInfo({ image_list, more_data, error }) {
   );
 }
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps(context: GetServerSidePropsContext) {
   console.log("My Params");
   const nasa_id = context.query.q;
   console.log(nasa_id);

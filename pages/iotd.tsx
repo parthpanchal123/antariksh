@@ -2,8 +2,11 @@ import axios from "axios";
 import Head from "next/head";
 import Link from "next/link";
 import Header from "../components/Header";
+import { useRouter } from "next/router";
+import { iotd_props } from "../types/types";
 
-export default function iotd({ img_data, error }) {
+export default function iotd({ img_data, error }: iotd_props) {
+  const router = useRouter();
   if (error)
     return (
       <div className="container h-full w-96 flex flex-col justify-center m-auto mt-52">
@@ -70,8 +73,14 @@ export default function iotd({ img_data, error }) {
         </div>
         <div className="flex flex-col flex-wrap m-5 items-center space-y-5 mt-5 ">
           <div className="max-w-sm text-center ">
-            <img src={img_data.url} className="rounded-lg"></img>
-
+            <span className="text-xs mb-2">
+              Tap on the image for HD version
+            </span>
+            <img
+              src={img_data.url}
+              className="rounded-lg cursor-pointer"
+              onClick={() => router.push(img_data.hdurl)}
+            ></img>
             <p className="flex flex-wrap flex-row-reverse justify-between my-2">
               <span className="italic text-right">{`- By ${
                 img_data.copyright ?? "NASA"
@@ -110,5 +119,3 @@ export async function getStaticProps() {
     };
   }
 }
-
-// export default iotd;
