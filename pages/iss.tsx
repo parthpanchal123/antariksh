@@ -2,8 +2,9 @@ import axios from "axios";
 import Head from "next/head";
 import Header from "../components/Header";
 import Link from "next/link";
+import { iss_props } from "../types/types";
 
-export default function iss({ people_in_space, error }) {
+export default function iss({ people_in_space, error }: iss_props) {
   const { people } = people_in_space;
   if (error)
     return (
