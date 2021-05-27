@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useRef } from "react";
 import { useRouter } from "next/router";
-import Link from "next/link";
 import Head from "next/head";
 import Image from "next/image";
 import { GetServerSidePropsContext } from "next";
