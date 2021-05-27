@@ -4,6 +4,8 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import Head from "next/head";
 import Image from "next/image";
+import { GetServerSidePropsContext } from "next";
+import { image_list_type, search_props } from "../types/types";
 
 const months = [
   "Jan",
@@ -20,22 +22,21 @@ const months = [
   "Dec",
 ];
 
-export default function search({ image_list, error }) {
+export default function search({ image_list, error }: search_props) {
   const router = useRouter();
-  const topic = useRef(null);
+  const topic = useRef() as any;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!topic.current.value) {
-      console.log(topic.current.style.borderColor);
+    if (topic.current && topic.current.value == "") {
       topic.current.style.borderColor = "red";
       return;
+    } else {
+      if (topic.current) {
+        topic.current.style.borderColor = "black";
+        router.replace(`/search?q=${topic.current.value}`);
+      }
     }
-    console.log(topic.current.value);
-    topic.current.style.borderColor = "black";
-    console.log(`/search?q=${topic.current.value}`);
-
-    router.replace(`/search?q=${topic.current.value}`);
   };
 
   if (error)
@@ -99,10 +100,12 @@ export default function search({ image_list, error }) {
         <h1 className="font-body text-center  font-bold text-lg">Antariksh</h1>
       </header>
       <div className="">
-        <span className="my-5">
-          <Link href="/">
-            <a className="text-sm text-center underline ml-2"> Go back</a>
-          </Link>
+        <span
+          className="text-sm text-center underline ml-2 mt-2 cursor-pointer"
+          onClick={() => router.back()}
+        >
+          {" "}
+          Go back
         </span>
         <form
           className="text-center my-2 flex flex-wrap justify-center gap-2 "
@@ -121,7 +124,7 @@ export default function search({ image_list, error }) {
         </form>
         <div className="max-w-screen-xl mx-auto p-5 sm:p-10 md:p-16">
           <div className="grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-10">
-            {image_list.map((image, index) => {
+            {image_list.map((image: image_list_type, index) => {
               const day = new Date(image.data[0].date_created);
               const cDate = day.getDate();
               const cMonth = day.getMonth();
@@ -137,11 +140,8 @@ export default function search({ image_list, error }) {
                 >
                   <div className="absolute rounded-md top-0 mt-20 right-0 bottom-0 left-0 bg-gradient-to-b from-transparent to-gray-900"></div>
                   <div className="absolute top-0 right-0 left-0 mx-2 mt-2 flex  justify-end rounded-md">
-                    <span
-                      href="#"
-                      className="text-xs bg-indigo-600 text-white px-5 py-2 uppercase hover:bg-white hover:text-indigo-600 transition ease-in-out duration-500"
-                    >
-                      {cDate + " " + months[parseInt(cMonth)] + "," + cYear}
+                    <span className="text-xs bg-indigo-600 text-white px-5 py-2 uppercase hover:bg-white hover:text-indigo-600 transition ease-in-out duration-500">
+                      {cDate + " " + months[cMonth] + "," + cYear}
                     </span>
                   </div>
                   <main className="p-5 z-10">
@@ -160,7 +160,7 @@ export default function search({ image_list, error }) {
   );
 }
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps(context: GetServerSidePropsContext) {
   const topic = context.query.q;
 
   try {

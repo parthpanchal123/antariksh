@@ -1,9 +1,11 @@
 import axios from "axios";
 import Head from "next/head";
-import Link from "next/link";
 import Header from "../components/Header";
+import Link from "next/link";
+import { iss_props } from "../types/types";
 
-export default function iotd({ img_data, error }) {
+export default function iss({ people_in_space, error }: iss_props) {
+  const { people } = people_in_space;
   if (error)
     return (
       <div className="container h-full w-96 flex flex-col justify-center m-auto mt-52">
@@ -22,7 +24,7 @@ export default function iotd({ img_data, error }) {
           name="viewport"
           content="width=device-width, initial-scale=1.0"
         ></meta>
-        <title>Antariksh 🚀 : Astronomy Picture Of the day</title>
+        <title>Antariksh 🚀 : ISS crew </title>
         <meta
           property="og:title"
           content="Antariksh 🚀 : A beautiful visual treat of the space,planets and galaxies from the space captured by NASA"
@@ -47,7 +49,7 @@ export default function iotd({ img_data, error }) {
         <meta property="twitter:url" content="https://antariksh.vercel.app" />
         <meta
           property="twitter:title"
-          content="Antariksh 🚀  — Astronomy picture of the day"
+          content="Antariksh 🚀  — A Space Adventure"
         />
         <meta
           property="twitter:description"
@@ -55,31 +57,33 @@ export default function iotd({ img_data, error }) {
         />
         <meta
           property="twitter:image"
-          content="https://i.imgur.com/5YeEQAG.png"
+          content="https://i.imgur.com/txLtrAx.png"
         ></meta>
       </Head>
       <Header />
-      <div className="container m-auto py-5">
-        <div className="mt-12">
-          <Link href="/">
-            <a className="text-sm text-center underline ml-2 text-black">
-              {" "}
-              Go back
-            </a>
-          </Link>
-        </div>
-        <div className="flex flex-col flex-wrap m-5 items-center space-y-5 mt-5 ">
-          <div className="max-w-sm text-center ">
-            <img src={img_data.url} className="rounded-lg"></img>
 
-            <p className="flex flex-wrap flex-row-reverse justify-between my-2">
-              <span className="italic text-right">{`- By ${
-                img_data.copyright ?? "NASA"
-              }`}</span>
-              <span className="font-bold">{img_data.title}</span>
-            </p>
+      <div className="iss-cover">
+        <div className="container h-screen m-auto text-white ">
+          <div className="grid sm:grid-cols-1 md:grid-cols-1 justify-items-center content-center h-full space-y-3  ">
+            <h2 className="text-white text-center text-md">
+              {people_in_space.number} people currently in the ISS
+              (International Space Station)
+            </h2>
+            {people.map((person) => {
+              return (
+                <div className="rounded bg-white text-center text-black md:w-1/4 w-2/3 md:py-5 sm:py-5 bg-gradient-to-r from-blue-900 to-transparent hover:from-yellow-500 hover:to-orange-500 transform transition duration-500  hover:scale-110 ease-in-out">
+                  {person.name}
+                </div>
+              );
+            })}
+            <div className="mt-12">
+              <Link href="/">
+                <a className=" text-center underline ml-2 text-white text-xl font-bold">
+                  Go back
+                </a>
+              </Link>
+            </div>
           </div>
-          <p className="md:w-1/2 text-justify">{img_data.explanation}</p>
         </div>
       </div>
     </>
@@ -88,20 +92,16 @@ export default function iotd({ img_data, error }) {
 
 export async function getStaticProps() {
   try {
-    const image_data = await axios.get(
-      `https://api.nasa.gov/planetary/apod?api_key=${process.env.API_KEY}`
-    );
+    const json_data = await axios.get(`http://api.open-notify.org/astros.json`);
 
-    console.log(image_data.data);
+    const people_in_space = json_data.data;
 
     return {
       props: {
-        img_data: image_data.data,
+        people_in_space,
       },
-      revalidate: 24 * 60 * 60,
     };
   } catch (error) {
-    console.log(error);
     return {
       props: {
         error:
@@ -110,5 +110,3 @@ export async function getStaticProps() {
     };
   }
 }
-
-// export default iotd;
