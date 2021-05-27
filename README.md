@@ -2,14 +2,13 @@
 
 ![](https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=next-dot-js&logoColor=white)
 ![](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
-![](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
+![](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
 
 # Stack
 
 ✨ NextJS with Server Side Rendering (SSR) and Static Site Generation (SSG) methods.  
 ✨ Tailwind CSS for the UI components design.  
 ✨ NASA API for fetching astronomy picture of the day and other topic images .
-
 
 # Screenshots
 
@@ -33,7 +32,8 @@ npm run dev
 # or
 yarn dev
 ```
-🤣 
+
+🤣
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
