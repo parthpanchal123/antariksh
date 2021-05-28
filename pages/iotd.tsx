@@ -107,7 +107,7 @@ export async function getStaticProps() {
       props: {
         img_data: image_data.data,
       },
-      revalidate: 24 * 60 * 60,
+      revalidate: 1000,
     };
   } catch (error) {
     console.log(error);
