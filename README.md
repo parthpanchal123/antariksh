@@ -28,6 +28,10 @@
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## Contributing
+
+- Refer this [Contributing.md](https://github.com/parthpanchal123/antariksh/blob/main/CONTRIBUTING.md) file for the guidelines for contributing to the project.
+
 ## Getting Started
 
 First, run the development server:
