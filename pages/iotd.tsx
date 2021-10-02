@@ -80,6 +80,8 @@ export default function iotd({ img_data, error }: iotd_props) {
               src={img_data.url}
               className="rounded-lg cursor-pointer"
               onClick={() => router.push(img_data.hdurl)}
+              width="384"
+              height="334"
             ></img>
             <p className="flex flex-wrap flex-row-reverse justify-between my-2">
               <span className="italic text-right">{`- By ${
