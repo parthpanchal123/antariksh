@@ -3,11 +3,6 @@ import Image from 'next/image'
 
 const LoadingImage = (props: any) => {
     const [showImage, setShowImage] = useState(false);
-    const [imageStyles, setImageStyles] = useState<CSSProperties>({
-        visibility: "hidden",
-        height: "1px",
-        width: "1px"
-    });
 
     const imageVisible: CSSProperties = {
         visibility: "visible",
@@ -17,21 +12,21 @@ const LoadingImage = (props: any) => {
 
     function showImageCallback() {
         setShowImage(true);
-        setImageStyles(imageVisible);
     }
     
     return (
         <div className="imageWrapper"> 
             <div
                 className={["rounded-lg loaderWrapper",!showImage ? 'fadeIn' : 'fadeOut'].join(' ')}
-                style={{width: `${props.width}px`,height: `${props.height}px`}}
+                style={{width: `${props.width}`,height: `${props.height}`}}
             >
                 <Image
                     src="/icon-192x192.png"
                     alt="Loading..."
                     width="192px"
                     height="192px"
-                    className={'spinAnimation'}
+                    className={['spinAnimation', 'max-w-full', 'max-h-full'].join(' ')}
+                    priority={true}
                 />
             </div>
              <Image

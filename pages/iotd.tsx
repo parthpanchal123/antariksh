@@ -80,8 +80,8 @@ export default function iotd({ img_data, error }: iotd_props) {
             </span>
             <LoadingImage
               src={img_data.url}
-              width="384"
-              height="334"
+              width="384px"
+              height="334px"
               classes="rounded-lg cursor-pointer"
               click={() => router.push(img_data.hdurl)}
             />
