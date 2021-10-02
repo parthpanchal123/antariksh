@@ -101,8 +101,6 @@ export async function getStaticProps() {
       `https://api.nasa.gov/planetary/apod?api_key=${process.env.API_KEY}`
     );
 
-    console.log(image_data.data);
-
     return {
       props: {
         img_data: image_data.data,
@@ -110,7 +108,6 @@ export async function getStaticProps() {
       revalidate: 1000,
     };
   } catch (error) {
-    console.log(error);
     return {
       props: {
         error:
