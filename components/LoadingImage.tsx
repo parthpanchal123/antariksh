@@ -1,4 +1,4 @@
-import { useState, useEffect, CSSProperties } from "react";
+import { useState, CSSProperties } from "react";
 import Image from 'next/image'
 
 const LoadingImage = (props: any) => {
