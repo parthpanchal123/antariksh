@@ -4,12 +4,6 @@ import Image from 'next/image'
 const LoadingImage = (props: any) => {
     const [showImage, setShowImage] = useState(false);
 
-    const imageVisible: CSSProperties = {
-        visibility: "visible",
-        height: "auto",
-        width: "auto"
-    };
-
     function showImageCallback() {
         setShowImage(true);
     }
