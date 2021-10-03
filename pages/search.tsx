@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import Image from "next/image";
@@ -25,6 +25,25 @@ const months = [
 export default function search({ image_list, error }: search_props) {
   const router = useRouter();
   const topic = useRef() as any;
+  const [showScrollButton, setShowScrollButton] = useState(false);
+
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      if (window.pageYOffset > 300) {
+        setShowScrollButton(true);
+      } else {
+        setShowScrollButton(false);
+      }
+    });
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -93,6 +112,13 @@ export default function search({ image_list, error }: search_props) {
           content="https://i.imgur.com/O0dXTiK.png"
         ></meta>
         <link rel="preload" as="image" href="/icon-192x192.png"></link>
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+          integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+          crossOrigin="anonymous"
+          referrerPolicy="no-referrer"
+        />
       </Head>
       <header className="bg-black p-5 text-white flex flex-row justify-center gap-x-1">
         <span>
@@ -134,7 +160,9 @@ export default function search({ image_list, error }: search_props) {
                 <DateImage
                   key={index}
                   image={image.links[0].href}
-                  click={() => router.push(`/image/?q=${image.data[0].nasa_id}`)}
+                  click={() =>
+                    router.push(`/image/?q=${image.data[0].nasa_id}`)
+                  }
                   date={cDate}
                   month={months[cMonth]}
                   year={cYear}
@@ -145,6 +173,14 @@ export default function search({ image_list, error }: search_props) {
             {/* starts here */}
           </div>
         </div>
+        {showScrollButton && (
+          <button
+            className="fixed bottom-10 right-10 w-16 h-16 rounded-full bg-black text-white"
+            onClick={scrollToTop}
+          >
+            <i className="fas fa-chevron-up" />
+          </button>
+        )}
       </div>
     </>
   );
