@@ -5,6 +5,7 @@ import Head from "next/head";
 import Image from "next/image";
 import { GetServerSidePropsContext } from "next";
 import { image_list_type, search_props } from "../types/types";
+import DateImage from "../components/DateImage";
 
 const months = [
   "Jan",
@@ -91,6 +92,7 @@ export default function search({ image_list, error }: search_props) {
           property="twitter:image"
           content="https://i.imgur.com/O0dXTiK.png"
         ></meta>
+        <link rel="preload" as="image" href="/icon-192x192.png"></link>
       </Head>
       <header className="bg-black p-5 text-white flex flex-row justify-center gap-x-1">
         <span>
@@ -129,26 +131,15 @@ export default function search({ image_list, error }: search_props) {
               const cMonth = day.getMonth();
               const cYear = day.getFullYear();
               return (
-                <div
-                  className="relative rounded-md h-64 w-full flex items-end justify-start text-left bg-cover bg-center shadow-md transition duration-500 ease-in-out transform hover:-translate-y-1 cursor-pointer"
+                <DateImage
                   key={index}
-                  style={{ backgroundImage: `url(${image.links[0].href})` }}
-                  onClick={() =>
-                    router.push(`/image/?q=${image.data[0].nasa_id}`)
-                  }
-                >
-                  <div className="absolute rounded-md top-0 mt-20 right-0 bottom-0 left-0 bg-gradient-to-b from-transparent to-gray-900"></div>
-                  <div className="absolute top-0 right-0 left-0 mx-2 mt-2 flex  justify-end rounded-md">
-                    <span className="text-xs bg-indigo-600 text-white px-5 py-2 uppercase hover:bg-white hover:text-indigo-600 transition ease-in-out duration-500">
-                      {cDate + " " + months[cMonth] + "," + cYear}
-                    </span>
-                  </div>
-                  <main className="p-5 z-10">
-                    <span className="text-md tracking-tight font-medium leading-7 font-regular text-white ">
-                      {image.data[0].title}
-                    </span>
-                  </main>
-                </div>
+                  image={image.links[0].href}
+                  click={() => router.push(`/image/?q=${image.data[0].nasa_id}`)}
+                  date={cDate}
+                  month={months[cMonth]}
+                  year={cYear}
+                  title={image.data[0].title}
+                ></DateImage>
               );
             })}
             {/* starts here */}
@@ -168,8 +159,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
         !topic ? "moon" : topic
       }&media_type=image`
     );
-
-    console.log(image_list.data.collection.items[1]);
 
     return {
       props: {

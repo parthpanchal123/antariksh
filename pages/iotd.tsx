@@ -5,6 +5,8 @@ import Header from "../components/Header";
 import { useRouter } from "next/router";
 import { iotd_props } from "../types/types";
 
+import LoadingImage from "../components/LoadingImage";
+
 export default function iotd({ img_data, error }: iotd_props) {
   const router = useRouter();
   if (error)
@@ -76,11 +78,13 @@ export default function iotd({ img_data, error }: iotd_props) {
             <span className="text-xs mb-2">
               Tap on the image for HD version
             </span>
-            <img
+            <LoadingImage
               src={img_data.url}
-              className="rounded-lg cursor-pointer"
-              onClick={() => router.push(img_data.hdurl)}
-            ></img>
+              width="384px"
+              height="334px"
+              classes="rounded-lg cursor-pointer"
+              click={() => router.push(img_data.hdurl)}
+            />
             <p className="flex flex-wrap flex-row-reverse justify-between my-2">
               <span className="italic text-right">{`- By ${
                 img_data.copyright ?? "NASA"
@@ -101,8 +105,6 @@ export async function getStaticProps() {
       `https://api.nasa.gov/planetary/apod?api_key=${process.env.API_KEY}`
     );
 
-    console.log(image_data.data);
-
     return {
       props: {
         img_data: image_data.data,
@@ -110,7 +112,6 @@ export async function getStaticProps() {
       revalidate: 1000,
     };
   } catch (error) {
-    console.log(error);
     return {
       props: {
         error:
