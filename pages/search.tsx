@@ -39,7 +39,11 @@ export default function search({ image_list, error }: search_props) {
   }, []);
 
   const scrollToTop = () => {
-    window.scrollTo(0, 0);
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
