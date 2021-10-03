@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import Image from "next/image";
@@ -25,6 +25,22 @@ const months = [
 export default function search({ image_list, error }: search_props) {
   const router = useRouter();
   const topic = useRef() as any;
+  const [showScrollButton, setShowScrollButton] = useState(false);
+
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      console.log(window.pageYOffset);
+      if (window.pageYOffset > 300) {
+        setShowScrollButton(true);
+      } else {
+        setShowScrollButton(false);
+      }
+    });
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo(0, 0);
+  };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -145,6 +161,14 @@ export default function search({ image_list, error }: search_props) {
             {/* starts here */}
           </div>
         </div>
+        {showScrollButton && (
+          <button
+            className="fixed bottom-10 right-10 w-16 h-16 rounded-full bg-black text-white"
+            onClick={scrollToTop}
+          >
+            &#8679;
+          </button>
+        )}
       </div>
     </>
   );
