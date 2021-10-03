@@ -113,6 +113,13 @@ export default function search({ image_list, error }: search_props) {
           content="https://i.imgur.com/O0dXTiK.png"
         ></meta>
         <link rel="preload" as="image" href="/icon-192x192.png"></link>
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+          integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer"
+        />
       </Head>
       <header className="bg-black p-5 text-white flex flex-row justify-center gap-x-1">
         <span>
@@ -170,7 +177,7 @@ export default function search({ image_list, error }: search_props) {
             className="fixed bottom-10 right-10 w-16 h-16 rounded-full bg-black text-white"
             onClick={scrollToTop}
           >
-            &#8679;
+            <i className="fas fa-chevron-up" />
           </button>
         )}
       </div>
