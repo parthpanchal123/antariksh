@@ -12,14 +12,14 @@
 
 # Screenshots
 
-- Homepage  
-  ![](https://i.imgur.com/4s7dpmB.png)
-- ISS Crew  
-  ![](https://i.imgur.com/txLtrAx.png)
-- Search Page  
-  ![](https://i.imgur.com/O0dXTiK.png)
-- Astronomy Picture of the Day  
-  ![](https://i.imgur.com/5YeEQAG.png)
+- Homepage
+  ![](https://user-images.githubusercontent.com/46792249/135755550-c8af2c94-0026-4c32-8a71-a4938ea9ec57.png)
+- ISS Crew
+  ![](https://user-images.githubusercontent.com/46792249/135755470-3b656304-47f2-4c5f-9897-ca35f31c307b.png)
+- Search Page
+  ![](https://user-images.githubusercontent.com/46792249/135755487-e9477977-de53-452a-8808-4f8230cfdcb3.png)
+- Astronomy Picture of the Day
+  ![](https://user-images.githubusercontent.com/46792249/135755490-2d350751-8000-430e-b6fa-f014a5d900cb.png)
 
 ## API key setup
 
