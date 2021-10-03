@@ -29,7 +29,6 @@ export default function search({ image_list, error }: search_props) {
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
-      console.log(window.pageYOffset);
       if (window.pageYOffset > 300) {
         setShowScrollButton(true);
       } else {
