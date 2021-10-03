@@ -72,7 +72,7 @@ export default function iss({ people_in_space, error }: iss_props) {
             {people.map((person) => {
               return (
                 <div className="rounded bg-white text-center text-black md:w-1/4 w-2/3 md:py-5 sm:py-5 bg-gradient-to-r from-blue-900 to-transparent hover:from-yellow-500 hover:to-orange-500 transform transition duration-500  hover:scale-110 ease-in-out">
-                  {person.name}
+                  <a href={`https://en.wikipedia.org/wiki/${person.name}`} target="_blank">{person.name}</a>
                 </div>
               );
             })}
