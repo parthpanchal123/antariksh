@@ -117,8 +117,8 @@ export default function search({ image_list, error }: search_props) {
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
           integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
-          crossorigin="anonymous"
-          referrerpolicy="no-referrer"
+          crossOrigin="anonymous"
+          referrerPolicy="no-referrer"
         />
       </Head>
       <header className="bg-black p-5 text-white flex flex-row justify-center gap-x-1">
@@ -161,7 +161,9 @@ export default function search({ image_list, error }: search_props) {
                 <DateImage
                   key={index}
                   image={image.links[0].href}
-                  click={() => router.push(`/image/?q=${image.data[0].nasa_id}`)}
+                  click={() =>
+                    router.push(`/image/?q=${image.data[0].nasa_id}`)
+                  }
                   date={cDate}
                   month={months[cMonth]}
                   year={cYear}
