@@ -83,7 +83,7 @@ export default function iotd({ img_data, error }: iotd_props) {
               width="384px"
               height="334px"
               classes="rounded-lg cursor-pointer"
-              click={() => router.push(img_data.hdurl)}
+              click={() => window.open(img_data.hdurl, '_blank')}
             />
             <p className="flex flex-wrap flex-row-reverse justify-between my-2">
               <span className="italic text-right">{`- By ${
