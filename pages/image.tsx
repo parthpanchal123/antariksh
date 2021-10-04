@@ -97,7 +97,11 @@ export default function ImageInfo({
             </p>
           </div>
           <p className="sm:w-2/3  md:w-1/2 w-full  text-center break-words ">
-            {more_data.description}
+            <b>Description:</b>  {more_data.description} <br />
+            <b>Secondary Creator:</b> {more_data.secondary_creator} <br />  
+            <b>NASA ID:</b> {more_data.nasa_id}<br />
+            <b>Created On:</b> {more_data.date_created}<br />
+            <b>Captured By:</b> {more_data.keywords[1]}
           </p>
         </div>
       </div>
@@ -106,10 +110,8 @@ export default function ImageInfo({
 }
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
-  console.log("My Params");
   const nasa_id = context.query.q;
-  console.log(nasa_id);
-
+ 
   try {
     const image_list = await axios.get(
       `https://images-api.nasa.gov/asset/${nasa_id}`
