@@ -152,7 +152,7 @@ export default function search({ image_list, error }: search_props) {
         <div className="max-w-screen-xl mx-auto p-5 sm:p-10 md:p-16">
           <div className="grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-10">
           {image_list.length === 0 ? (
-            <div className='pt-10 pb-10 h-screen w-full mx-auto text-center'>
+            <div className='resimg'>
               <img src="/empty_state.gif" className="block mx-auto" alt="Loading..."/>
               <h1 className='mt-10'>Sorry We Couldn't Find Any Results for This Search :(</h1>
               
