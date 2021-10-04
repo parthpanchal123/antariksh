@@ -4,6 +4,7 @@ import Head from "next/head";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { specific_image_props } from "../types/types";
+import Link from "next/link";
 
 export default function ImageInfo({
   image_list,
@@ -66,10 +67,14 @@ export default function ImageInfo({
         ></meta>
       </Head>
       <header className="bg-black p-5 text-white flex flex-row justify-center gap-x-1">
-        <span>
-          <Image src="/icon.png" width="30" height="30"></Image>
-        </span>
-        <h1 className="font-body text-center  font-bold text-lg">Antariksh</h1>
+        <Link href="/">
+          <span>
+            <Image src="/icon.png" width="30" height="30"></Image>
+          </span>
+        </Link>
+        <Link href="/">
+          <a className="font-body text-center  font-bold text-lg">Antariksh</a>
+        </Link>
       </header>
       <div className="container m-auto py-5 w-full h-full">
         <div className="mt-2">
