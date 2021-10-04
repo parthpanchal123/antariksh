@@ -151,24 +151,30 @@ export default function search({ image_list, error }: search_props) {
         </form>
         <div className="max-w-screen-xl mx-auto p-5 sm:p-10 md:p-16">
           <div className="grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-10">
-            {image_list.map((image: image_list_type, index) => {
-              const day = new Date(image.data[0].date_created);
-              const cDate = day.getDate();
-              const cMonth = day.getMonth();
-              const cYear = day.getFullYear();
-              return (
-                <DateImage
-                  key={index}
-                  image={image.links[0].href}
-                  click={() =>
-                    router.push(`/image/?q=${image.data[0].nasa_id}`)
-                  }
-                  date={cDate}
-                  month={months[cMonth]}
-                  year={cYear}
-                  title={image.data[0].title}
-                ></DateImage>
-              );
+          {image_list.length === 0 ? (
+            <div className='pt-10 pb-10 h-screen w-full mx-auto text-center'>
+              <img src="/empty_state.gif" className="block mx-auto" alt="Loading..."/>
+              <h1 className='mt-10'>Sorry We Couldn't Find Any Results for This Search :(</h1>
+              
+            </div>)
+              :image_list.map((image: image_list_type, index) => {
+                const day = new Date(image.data[0].date_created);
+                const cDate = day.getDate();
+                const cMonth = day.getMonth();
+                const cYear = day.getFullYear();
+                return (
+                  <DateImage
+                    key={index}
+                    image={image.links[0].href}
+                    click={() =>
+                      router.push(`/image/?q=${image.data[0].nasa_id}`)
+                    }
+                    date={cDate}
+                    month={months[cMonth]}
+                    year={cYear}
+                    title={image.data[0].title}
+                  ></DateImage>
+                );
             })}
             {/* starts here */}
           </div>
