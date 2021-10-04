@@ -121,7 +121,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
       `https://images-api.nasa.gov/search?q=&nasa_id=${nasa_id}`
     );
 
-    console.log(more_data.data.collection.items[0].data[0]);
 
     return {
       props: {
