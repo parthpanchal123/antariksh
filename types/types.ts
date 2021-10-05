@@ -24,6 +24,12 @@ export interface specific_image_props {
   more_data: {
     title: string;
     description: string;
+    secondary_creator: string;
+    nasa_id: string;
+    date_created: string;
+    keywords: string;
+
+
   };
   image_list: image_list_type[];
 }

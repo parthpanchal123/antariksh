@@ -17,7 +17,7 @@ const DateImage = (props: any) => {
       <div className="absolute rounded-md top-0 mt-0 right-0 bottom-0 left-0 bg-gradient-to-b from-transparent to-gray-900"></div>
       <div className="absolute top-0 right-0 left-0 mx-2 mt-2 flex justify-end rounded-md">
         <span className="text-xs bg-indigo-600 text-white px-5 py-2 uppercase hover:bg-white hover:text-indigo-600 transition ease-in-out duration-500">
-          {props.date + " " + props.month + "," + props.year}
+          {props.date + " " + props.month + "," + " "+ props.year}
         </span>
       </div>
       <main className="absolute p-5 z-10 bottom-0">

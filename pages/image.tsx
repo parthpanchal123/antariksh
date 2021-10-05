@@ -4,6 +4,7 @@ import Head from "next/head";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { specific_image_props } from "../types/types";
+import Link from "next/link";
 
 export default function ImageInfo({
   image_list,
@@ -66,10 +67,14 @@ export default function ImageInfo({
         ></meta>
       </Head>
       <header className="bg-black p-5 text-white flex flex-row justify-center gap-x-1">
-        <span>
-          <Image src="/icon.png" width="30" height="30"></Image>
-        </span>
-        <h1 className="font-body text-center  font-bold text-lg">Antariksh</h1>
+        <Link href="/">
+          <span>
+            <Image src="/icon.png" width="30" height="30"></Image>
+          </span>
+        </Link>
+        <Link href="/">
+          <a className="font-body text-center  font-bold text-lg">Antariksh</a>
+        </Link>
       </header>
       <div className="container m-auto py-5 w-full h-full">
         <div className="mt-2">
@@ -97,7 +102,11 @@ export default function ImageInfo({
             </p>
           </div>
           <p className="sm:w-2/3  md:w-1/2 w-full  text-center break-words ">
-            {more_data.description}
+            <b>Description:</b>  {more_data.description} <br />
+            <b>Secondary Creator:</b> {more_data.secondary_creator} <br />  
+            <b>NASA ID:</b> {more_data.nasa_id}<br />
+            <b>Created On:</b> {more_data.date_created}<br />
+            <b>Captured By:</b> {more_data.keywords[1]}
           </p>
         </div>
       </div>
@@ -106,10 +115,8 @@ export default function ImageInfo({
 }
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
-  console.log("My Params");
   const nasa_id = context.query.q;
-  console.log(nasa_id);
-
+ 
   try {
     const image_list = await axios.get(
       `https://images-api.nasa.gov/asset/${nasa_id}`
@@ -119,7 +126,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
       `https://images-api.nasa.gov/search?q=&nasa_id=${nasa_id}`
     );
 
-    console.log(more_data.data.collection.items[0].data[0]);
 
     return {
       props: {
