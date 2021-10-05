@@ -160,7 +160,7 @@ export default function search({ image_list, error }: search_props) {
           {image_list.length === 0 ? (
             <div className='resimg'>
               <img src="/empty_state.gif" className="block mx-auto" alt="Loading..."/>
-              <h1 className='mt-10'>Sorry We Couldn't Find Any Results for This Search :(</h1>
+              <h1 className='col-md-12 text-center text-md-left p-2'>Sorry We Couldn't Find Any Results for This Search :(</h1>
               
             </div>)
               :image_list.map((image: image_list_type, index) => {

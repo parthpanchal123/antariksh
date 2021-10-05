@@ -32,11 +32,12 @@ body {
 }
 
 .resimg{
-  position: fixed;
+  position: absolute;
  	top: 50%;
  	left: 50%;
  	transform: translate(-50%, -50%); 
 }
+
 @keyframes float {
   0% {
     /* box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6); */
