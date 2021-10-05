@@ -37,6 +37,13 @@ body {
  	left: 50%;
  	transform: translate(-50%, -50%); 
 }
+/* Style for Medium Screen */
+@media (max-width:767px) {
+  .resimg {
+      width: 100px;
+      margin-top: 95px;
+  }
+}
 
 @keyframes float {
   0% {
