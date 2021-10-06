@@ -23,6 +23,55 @@ export default function ImageInfo({
       </div>
     );
 
+  var month = "";
+  var year = more_data.date_created.slice(0, 4);
+  var monthNum = more_data.date_created.slice(5, 7);
+  var date = more_data.date_created.slice(8, 10);
+  switch (monthNum) {
+    case "01":
+      month = "January";
+      break;
+    case "02":
+      month = "February";
+      break;
+    case "03":
+      month = "March";
+      break;
+    case "04":
+      month = "April";
+      break;
+    case "05":
+      month = "May";
+      break;
+    case "06":
+      month = "June";
+      break;
+    case "07":
+      month = "July";
+      break;
+    case "08":
+      month = "August";
+      break;
+    case "09":
+      month = "September";
+      break;
+    case "10":
+      month = "October";
+      break;
+    case "11":
+      month = "November";
+      break;
+    case "12":
+      month = "December";
+      break;
+    default:
+      break;
+  }
+
+  var fullDate = date + " " + month + " " + year;
+
+  var rest = more_data.date_created.slice(11,more_data.date_created.length);
+
   return (
     <>
       <Head>
@@ -102,10 +151,12 @@ export default function ImageInfo({
             </p>
           </div>
           <p className="sm:w-2/3  md:w-1/2 w-full  text-center break-words ">
-            <b>Description:</b>  {more_data.description} <br />
-            <b>Secondary Creator:</b> {more_data.secondary_creator} <br />  
-            <b>NASA ID:</b> {more_data.nasa_id}<br />
-            <b>Created On:</b> {more_data.date_created}<br />
+            <b>Description:</b> {more_data.description} <br />
+            <b>Secondary Creator:</b> {more_data.secondary_creator} <br />
+            <b>NASA ID:</b> {more_data.nasa_id}
+            <br />
+            <b>Created On:</b> {fullDate} {rest}
+            <br />
             <b>Captured By:</b> {more_data.keywords[1]}
           </p>
         </div>
@@ -116,7 +167,7 @@ export default function ImageInfo({
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const nasa_id = context.query.q;
- 
+
   try {
     const image_list = await axios.get(
       `https://images-api.nasa.gov/asset/${nasa_id}`
@@ -125,7 +176,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     const more_data = await axios.get(
       `https://images-api.nasa.gov/search?q=&nasa_id=${nasa_id}`
     );
-
 
     return {
       props: {
