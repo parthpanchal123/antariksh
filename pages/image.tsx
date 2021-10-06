@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { specific_image_props } from "../types/types";
 import Link from "next/link";
+import dateFormat from "dateformat";
 
 export default function ImageInfo({
   image_list,
@@ -94,7 +95,7 @@ export default function ImageInfo({
             <img
               src={image_list[0].href}
               className="rounded-lg cursor-pointer"
-              onClick={() => router.push(image_list[0].href)}
+              onClick={() => window.open(image_list[0].href, "_blank")}
             ></img>
 
             <p className="flex flex-wrap flex-row-reverse justify-center my-2 text-lg font-bold">
@@ -105,7 +106,7 @@ export default function ImageInfo({
             <b>Description:</b>  {more_data.description} <br />
             <b>Secondary Creator:</b> {more_data.secondary_creator} <br />  
             <b>NASA ID:</b> {more_data.nasa_id}<br />
-            <b>Created On:</b> {more_data.date_created}<br />
+            <b>Created On:</b> {dateFormat(`${more_data.date_created}`, "dddd, mmmm dS, yyyy, h:MM:ss TT")}<br />
             <b>Captured By:</b> {more_data.keywords[1]}
           </p>
         </div>
