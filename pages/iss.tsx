@@ -65,17 +65,18 @@ export default function iss({ people_in_space, error }: iss_props) {
       <div className="iss-cover">
         <div className="container h-full m-auto text-white ">
           <div className="grid sm:grid-cols-1 md:grid-cols-1 justify-items-center content-center space-y-3  ">
-            <div className="w-full py-16 flex flex-col justify-center items-center justify-items-center gap-y-2 overflow-visible">
-              <h2 className="text-white text-center text-md">
-                {people_in_space.number} people currently in the ISS
-                (International Space Station)
-              </h2>
+            <h2 className="text-white text-center text-md">
+              {people_in_space.number} people currently in the ISS
+              (International Space Station)
+            </h2>
+            <div className="w-full h-4/5 flex flex-col justify-center items-center justify-items-center gap-y-2 overflow-visible">
               {people.map((person) => {
                 return (
                   <div className="rounded bg-white text-center text-black md:w-1/4 w-2/3 md:py-5 sm:py-5 bg-gradient-to-r from-blue-900 to-transparent hover:from-yellow-500 hover:to-orange-500 transform transition duration-500  hover:scale-110 ease-in-out">
                     <a
                       href={`https://en.wikipedia.org/wiki/${person.name}`}
                       target="_blank"
+                      rel="noopener noreferrer"
                     >
                       {person.name}
                     </a>
