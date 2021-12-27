@@ -20,7 +20,7 @@ const LoadingImage = (props: any) => {
                     width="192px"
                     height="192px"
                     className={['spinAnimation', 'max-w-full', 'max-h-full'].join(' ')}
-                    priority={true}
+                    priority
                 />
             </div>
              <Image
