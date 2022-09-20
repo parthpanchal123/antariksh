@@ -1,8 +1,8 @@
 import axios from "axios";
 import Head from "next/head";
-import Header from "../components/Header";
 import Link from "next/link";
 import { iss_props } from "../types/types";
+import Image from "next/image";
 
 export default function iss({ people_in_space, error }: iss_props) {
   const { people } = people_in_space;
@@ -60,16 +60,26 @@ export default function iss({ people_in_space, error }: iss_props) {
           content="https://i.imgur.com/txLtrAx.png"
         ></meta>
       </Head>
-      <Header />
+      {/* <Header /> */}
+      <header className="bg-black w-screen p-3 text-white flex flex-row justify-center gap-x-1" >
+        <span>
+          <Link href="/">
+            <Image src="/icon.png" width="30" height="30"></Image>
+          </Link>
+        </span>
+        <Link href="/">
+          <a className="font-body text-center  font-bold text-lg">Antariksh</a>
+        </Link>
+      </header>
 
-      <div className="iss-cover">
-        <div className="container h-full m-auto text-white ">
-          <div className="grid sm:grid-cols-1 md:grid-cols-1 justify-items-center content-center space-y-3  ">
-            <h2 className="text-white text-center text-md">
-              {people_in_space.number} people currently in the ISS
-              (International Space Station)
-            </h2>
-            <div className="w-full h-4/5 flex flex-col justify-center items-center justify-items-center gap-y-2 overflow-visible">
+      <div className="iss-cover" >
+        <div className="container h-full m-auto text-white">
+          <div className="h-full grid sm:grid-cols-1 md:grid-cols-1 justify-items-center content-center space-y-3 ">
+            <div className="w-full h-screen flex flex-col justify-center items-center justify-items-center gap-y-2 ">
+              <h2 className="text-white text-center text-md ">
+                {people_in_space.number} people currently in the ISS
+                (International Space Station)
+              </h2>
               {people.map((person) => {
                 return (
                   <div className="rounded bg-white text-center text-black md:w-1/4 w-2/3 md:py-5 sm:py-5 bg-gradient-to-r from-blue-900 to-transparent hover:from-yellow-500 hover:to-orange-500 transform transition duration-500  hover:scale-110 ease-in-out">
@@ -82,15 +92,15 @@ export default function iss({ people_in_space, error }: iss_props) {
                     </a>
                   </div>
                 );
-              })}
-            </div>
-            <div className="mt-12">
+              }
+              )}
               <Link href="/">
                 <a className=" text-center underline ml-2 text-white text-xl font-bold">
                   Go back
                 </a>
               </Link>
             </div>
+
           </div>
         </div>
       </div>
