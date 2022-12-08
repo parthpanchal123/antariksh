@@ -62,7 +62,7 @@ export default function iss({ people_in_space, error }: iss_props) {
     {/* <Header /> */}
     <header className="bg-black w-screen p-3 text-white flex flex-row justify-center gap-x-1" >
       <span>
-        <Link href="/" legacyBehavior>
+        <Link href="/">
           <Image src="/icon.png" width="30" height="30" alt="Logo"></Image>
         </Link>
       </span>

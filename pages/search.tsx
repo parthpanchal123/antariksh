@@ -122,7 +122,7 @@ export default function search({ image_list, error }: search_props) {
       />
     </Head>
     <header className="bg-black p-5 text-white flex flex-row justify-center gap-x-1">
-      <Link href="/" legacyBehavior>
+      <Link href="/" >
         <span>
           <Image src="/icon.png" width="30" height="30" alt="Logo"></Image>
         </span>

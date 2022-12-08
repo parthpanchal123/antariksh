@@ -70,17 +70,17 @@ export default function Home() {
                 Quench your thirst of the gigantic world above !
               </p>
               <div className="flex flex-row gap-x-2 mt-2">
-                <Link href="/iotd" legacyBehavior>
+                <Link href="/iotd">
                   <button className="bg-black hover:bg-blue-700 transform transition duration-500  hover:scale-110 ease-in-out text-white font-bold py-1 px-4 rounded ">
                     Image of the Day
                   </button>
                 </Link>
-                <Link href="/search" legacyBehavior>
+                <Link href="/search">
                   <button className="bg-black hover:bg-blue-700 transform transition duration-500  hover:scale-110 ease-in-out  text-white font-bold py-1 px-4 rounded">
                     Search
                   </button>
                 </Link>
-                <Link href="/iss" legacyBehavior>
+                <Link href="/iss">
                   <button className="bg-black hover:bg-blue-700 transform transition duration-500  hover:scale-110 ease-in-out  text-white font-bold py-1 px-4 rounded">
                     ISS crew
                   </button>
