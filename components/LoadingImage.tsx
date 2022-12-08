@@ -1,5 +1,5 @@
-import { useState, CSSProperties } from "react";
-import Image from 'next/image'
+import { useState } from "react";
+import Image from 'next/legacy/image'
 
 const LoadingImage = (props: any) => {
     const [showImage, setShowImage] = useState(false);
