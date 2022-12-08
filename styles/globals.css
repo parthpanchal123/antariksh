@@ -31,7 +31,7 @@ body {
 .iss-cover {
   background-image: url("../public/iss.png");
   background-size: cover;
-  background-repeat: repeat;
+  background-repeat: no-repeat;
   background-position: top right;
 }
 

@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import { specific_image_props } from "../types/types";
 import Link from "next/link";
 import dateFormat from "dateformat";
+import LoadingImage from "../components/LoadingImage";
 
 export default function ImageInfo({
   image_list,
@@ -86,24 +87,26 @@ export default function ImageInfo({
           Go back
         </span>
       </div>
-      <div className="flex flex-col flex-wrap m-5 items-center space-y-5 mt-5 ">
+      <div className="flex flex-col flex-wrap m-5 justify-center items-center space-y-5 mt-5 ">
         <div className="max-w-sm text-center ">
           <span className="text-xs mb-4">
             Tap on the image for HD version
           </span>
-          <img
-            src={image_list[0].href}
-            className="rounded-lg cursor-pointer"
-            onClick={() => window.open(image_list[0].href, "_blank")}
-           alt="NASA search result image"></img>
-
+          <LoadingImage
+              src={image_list[0].href}
+              width={384}
+              height={334}
+              classes="rounded-lg cursor-pointer"
+              click={() => window.open(image_list[0].href, "_blank")}
+              alt="NASA search result image"
+          />
           <p className="flex flex-wrap flex-row-reverse justify-center my-2 text-lg font-bold">
             {more_data.title}
           </p>
         </div>
-        <p className="sm:w-2/3  md:w-1/2 w-full  text-center break-words ">
+        <p className="sm:w-2/3  md:w-96 w-full justify-center text-left break-words ">
           <b>Description:</b>  {more_data.description} <br />
-          <b>Secondary Creator:</b> {more_data.secondary_creator} <br />  
+          <b>Secondary Creator:</b> {more_data.secondary_creator} <br />
           <b>NASA ID:</b> {more_data.nasa_id}<br />
           <b>Created On:</b> {dateFormat(`${more_data.date_created}`, "dddd, mmmm dS, yyyy, h:MM:ss TT")}<br />
           <b>Captured By:</b> {more_data.keywords[1]}
@@ -115,7 +118,7 @@ export default function ImageInfo({
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const nasa_id = context.query.q;
- 
+
   try {
     const image_list = await axios.get(
       `https://images-api.nasa.gov/asset/${nasa_id}`
