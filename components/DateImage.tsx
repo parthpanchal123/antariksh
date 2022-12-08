@@ -9,8 +9,8 @@ const DateImage = (props: any) => {
     >
       <LoadingImage
         src={props.image}
-        width="358px"
-        height="263px"
+        width="358"
+        height="263"
         classes="rounded-lg cursor-pointer"
         click={() => props.click()}
       />

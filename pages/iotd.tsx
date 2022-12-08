@@ -77,8 +77,8 @@ export default function iotd({ img_data, error }: iotd_props) {
           </span>
           <LoadingImage
             src={img_data.url}
-            width="384px"
-            height="334px"
+            width="384"
+            height="334"
             classes="rounded-lg cursor-pointer"
             click={() => window.open(img_data.hdurl, '_blank')}
           />

@@ -8,6 +8,7 @@ const LoadingImage = (props: any) => {
         setShowImage(true);
     }
     
+    // @ts-ignore
     return (
         <div className="imageWrapper"> 
             <div
@@ -17,8 +18,8 @@ const LoadingImage = (props: any) => {
                 <Image
                     src="/icon-192x192.png"
                     alt="Loading..."
-                    width="192px"
-                    height="192px"
+                    width="192"
+                    height="192"
                     className={['spinAnimation', 'max-w-full', 'max-h-full'].join(' ')}
                     priority
                 />
