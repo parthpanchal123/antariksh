@@ -1,5 +1,5 @@
-import { useState, CSSProperties } from "react";
-import Image from 'next/image'
+import { useState } from "react";
+import Image from 'next/legacy/image'
 
 const LoadingImage = (props: any) => {
     const [showImage, setShowImage] = useState(false);
@@ -7,29 +7,30 @@ const LoadingImage = (props: any) => {
     function showImageCallback() {
         setShowImage(true);
     }
-    
+
     return (
-        <div className="imageWrapper"> 
+        <div className="imageWrapper">
             <div
                 className={["rounded-lg loaderWrapper",!showImage ? 'fadeIn' : 'fadeOut'].join(' ')}
-                style={{width: `${props.width}`,height: `${props.height}`}}
+                // style={{width: `${props.width}`,height: `${props.height}`}}
+                style={{width: "100%", height:"95%" }}
             >
                 <Image
                     src="/icon-192x192.png"
                     alt="Loading..."
-                    width="192px"
-                    height="192px"
+                    width={192}
+                    height={192}
                     className={['spinAnimation', 'max-w-full', 'max-h-full'].join(' ')}
                     priority
                 />
             </div>
-             <Image
+            <Image
                 src={props.src}
                 alt="Test"
                 width={props.width}
                 height={props.height}
                 className={[
-                    props.classes, 
+                    props.classes,
                     showImage ? 'fadeIn' : 'fadeOut'].join(' ')}
                 onLoad={() => showImageCallback()}
                 onClick={() => props.click()}
