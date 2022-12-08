@@ -9,7 +9,7 @@ export default function Header() {
         <Image src="/icon.png" width="30" height="30" alt="Logo"></Image>
         </Link>
       </span>
-      <Link href="/" className="font-body text-center  font-bold text-lg">  
+      <Link href="/" legacyBehavior className={"font-body text-center font-bold text-lg"}>
         Antariksh
       </Link>
     </header>
