@@ -5,7 +5,6 @@ const ChatList = ({chatData}:any) => {
     useEffect(()=>{
         console.log("Rendered")
         console.log(chatData)
-
     },[chatData])
     return <>
         {

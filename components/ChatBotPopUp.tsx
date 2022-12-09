@@ -17,10 +17,29 @@ const ChatBotPopUp = ({setShowChat}: any) => {
         console.log(query);
         setChat((oldChat) => [...oldChat, {from: "me", content: query}])
         console.log(chat)
+        const respData = await fetchData();
+        console.log(respData)
+        if(respData){
+            setChat((oldChat) => [...oldChat, {from: "ai", content: respData.choices[0].text}])
+        }
         setQuery("")
     }
 
-    return <div className={"md:w-1/2 md:h-3/5 pop-up bg-white rounded-md p-2 "}>
+    const fetchData = async () => {
+        try {
+            const resData = await axios.post("api/chat-gpt", {
+                prompt: query
+            });
+            if (resData.data) {
+                console.log(resData.data)
+                return resData.data;
+            }
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
+    return <div className={"md:w-1/2 md:h-3/5 pop-up bg-white rounded-md p-2"}>
         <div className={"w-full flex flex-row justify-end p-1"}>
             <button onClick={() => setShowChat(false)}>
                 <Image src={"/close.svg"} alt={"Close Icon"} width={30} height={30}/>
