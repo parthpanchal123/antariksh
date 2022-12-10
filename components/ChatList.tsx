@@ -9,7 +9,7 @@ const ChatList = ({chatData}:any) => {
     return <>
         {
             chatData.map((summary:any) => {
-                return summary.from === "ai" ? <div id={summary.id} className={"flex flex-row w-3/4 m-2 gap-x-2 "}>
+                return summary.from === "ai" ? <div id={summary.id} className={"drop-shadow-2xl flex flex-row w-3/4 m-2 gap-x-2 "}>
                     <Image src="/openai.svg" className="w-10 h-10 rounded-md border-2" alt={"Temp"} width={2}
                            height={5}/>
                     <div
@@ -24,8 +24,8 @@ const ChatList = ({chatData}:any) => {
                     </div>
                 </div> : summary.from === "me" ? <div id={summary.id} className={"flex flex-row-reverse m-2 gap-x-2"}>
                     {/*<Image src="/bitmoji.svg" className="w-10 h-10 rounded-md border-2" alt={"Temp"} width={8} height={8}/>*/}
-                    <div className="bg-blue-500 p-2 rounded-lg rounded-tr-none">
-                        <p className="text-white text-sm">
+                    <div className="bg-blue-100 drop-shadow-2xl p-2 rounded-lg rounded-tr-none">
+                        <p className="text-black text-sm">
                              {
                             summary.content
                         }
