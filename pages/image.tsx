@@ -104,7 +104,7 @@ export default function ImageInfo({
             {more_data.title}
           </p>
         </div>
-        <p className="sm:w-2/3  md:w-96 w-full justify-center text-justify break-words ">
+        <p className="sm:w-2/3 md:w-96 w-full justify-center text-left break-words ">
           <b>Description :</b>  {more_data.description} <br />
           <b>Secondary Creator :</b> {more_data.secondary_creator} <br />
           <b>NASA ID :</b> {more_data.nasa_id}<br />

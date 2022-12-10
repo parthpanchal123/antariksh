@@ -37,12 +37,13 @@ body {
     background-position: top right;
 }
 
-.resimg {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
+/*.resimg {*/
+/*    position: absolute;*/
+/*    top: 50%;*/
+/*    left: 50%;*/
+/*    width: 100%;*/
+/*    transform: translate(-50%, -50%);*/
+/*}*/
 
 /* Style for Medium Screen */
 @media (max-width: 767px) {
@@ -161,5 +162,14 @@ body {
     .pop-up {
         height: 90%;
         width: 90%;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
     }
 }

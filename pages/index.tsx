@@ -55,27 +55,27 @@ export default function Home() {
     <Header/>
 
     <div className="home-cover">
-      <div className="container h-screen m-auto text-white">
+      <div className="container h-screen m-auto text-white p-2">
         {/* Middle section */}
-        <div className="grid sm:grid-cols-1 md:grid-cols-2 justify-items-center content-center h-full space-y-6">
+        <div
+            className="grid sm:grid-cols-1 md:grid-cols-2 justify-items-center content-center text-center h-full space-y-6">
           {/* Left Text */}
-          <div className="flex flex-col order-last self-center md:text-left sm:text-center">
+          <div className="flex flex-col order-last self-center md:text-left sm:text-center" id={"space"}>
             <div>
-              <h1 className="text-base mb-10 md:text-left sm:text-center ">
+              <h1 className="text-base mb-8 md:text-left sm:text-center ">
                 {" "}
                 <span className="text-lg">
                   Exhilarating views from the{" "}
                 </span>{" "}
-                <br/> <span className="font-bold text-7xl">SPACE</span>
+                <br/> <span className="font-bold text-7xl text-blue-400">SPACE</span>
               </h1>
             </div>
-
             <div>
               <p className="text-sm mb-5">
                 {" "}
                 Quench your thirst of the gigantic world above !
               </p>
-              <div className="flex flex-row gap-x-2 mt-2">
+              <div className="flex flex-row sm:justify-center flex-wrap gap-y-2 gap-x-2 mt-2">
                 <Link href="/iotd">
                   <button
                       className="bg-black hover:bg-blue-700 transform transition duration-500  hover:scale-110 ease-in-out text-white font-bold py-1 px-4 rounded ">
@@ -85,7 +85,7 @@ export default function Home() {
                 <Link href="/search">
                   <button
                       className="bg-black hover:bg-blue-700 transform transition duration-500  hover:scale-110 ease-in-out  text-white font-bold py-1 px-4 rounded">
-                    Search
+                    Search Images
                   </button>
                 </Link>
                 <Link href="/iss">
@@ -94,6 +94,9 @@ export default function Home() {
                     ISS crew
                   </button>
                 </Link>
+                <span>
+        <ChatBoxButton showChat={showChat} setShowChat={setShowChat}/>
+      </span>
               </div>
             </div>
           </div>
@@ -127,9 +130,7 @@ export default function Home() {
         </span>
         </a>
       </div>
-      <span>
-        <ChatBoxButton showChat={showChat} setShowChat={setShowChat}/>
-      </span>
+
     </footer>
   </>;
 }
