@@ -83,10 +83,10 @@ export default function iotd({ img_data, error }: iotd_props) {
             click={() => window.open(img_data.hdurl, '_blank')}
           />
           <p className="flex flex-wrap flex-row-reverse justify-between my-2">
-            <span className="italic text-right">{`- By ${
-              img_data.copyright ?? "NASA"
-            }`}</span>
             <span className="font-bold">{img_data.title}</span>
+            <span className="italic text-right">{`- By ${
+                img_data.copyright ?? "NASA"
+            }`}</span>
           </p>
         </div>
         <p className="md:w-1/2 text-justify">{img_data.explanation}</p>

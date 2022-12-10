@@ -9,134 +9,167 @@
 }
 
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 html {
-  width: 100%;
-  height: 100%;
+    width: 100%;
+    height: 100%;
 }
+
 body {
-  width: 100%;
-  height: 100%;
-  overflow-x: hidden;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
 }
 
 .home-cover {
-  background-image: url("../public/space.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: bottom left;
-}
-.iss-cover {
-  background-image: url("../public/iss.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: top right;
+    background-image: url("../public/space.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom left;
 }
 
-.resimg {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.iss-cover {
+    background-image: url("../public/iss.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top right;
 }
+
+/*.resimg {*/
+/*    position: absolute;*/
+/*    top: 50%;*/
+/*    left: 50%;*/
+/*    width: 100%;*/
+/*    transform: translate(-50%, -50%);*/
+/*}*/
+
 /* Style for Medium Screen */
 @media (max-width: 767px) {
-  .resimg {
-    width: 100px;
-    margin-top: 95px;
-  }
+    .resimg {
+        width: 100px;
+        margin-top: 95px;
+    }
 }
 
 @keyframes float {
-  0% {
-    /* box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6); */
-    transform: translatey(0px);
-  }
-  50% {
-    /* box-shadow: 0 25px 15px 0px rgba(0, 0, 0, 0.2); */
-    transform: translatey(10px);
-  }
-  100% {
-    /* box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6); */
-    transform: translatey(0px);
-  }
+    0% {
+        /* box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6); */
+        transform: translatey(0px);
+    }
+    50% {
+        /* box-shadow: 0 25px 15px 0px rgba(0, 0, 0, 0.2); */
+        transform: translatey(10px);
+    }
+    100% {
+        /* box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6); */
+        transform: translatey(0px);
+    }
 }
 
 #space {
-  transform: translatey(0px);
-  animation: float 4s ease-in-out infinite;
-  /* box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6); */
+    transform: translatey(0px);
+    animation: float 4s ease-in-out infinite;
+    /* box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6); */
 }
 
 @layer base {
-  @font-face {
-    font-family: "Poppins";
-  }
+    @font-face {
+        font-family: "Poppins";
+    }
 }
 
 @-moz-keyframes spin {
-  100% {
-    -moz-transform: rotate(360deg);
-  }
+    100% {
+        -moz-transform: rotate(360deg);
+    }
 }
+
 @-webkit-keyframes spin {
-  100% {
-    -webkit-transform: rotate(360deg);
-  }
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
 }
+
 @keyframes spin {
-  100% {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
 }
 
 .imageWrapper {
-  max-width: 100%;
-  max-height: 100%;
-  position: relative;
-  text-align: center;
+    max-width: 100%;
+    max-height: 100%;
+    position: relative;
+    text-align: center;
 }
 
 .loaderWrapper {
-  max-width: 100%;
-  max-height: 100%;
-  background-color: black;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  padding: 30%;
+    max-width: 100%;
+    max-height: 100%;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    padding: 30%;
 }
 
 .spinAnimation {
-  animation: spin 4s linear infinite;
+    animation: spin 4s linear infinite;
 }
 
 .fadeOut {
-  opacity: 0;
-  width: 0;
-  height: 0;
-  transition: width 0.3s 0.3s, height 0.3s 0.3s, opacity 0.3s;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    transition: width 0.3s 0.3s, height 0.3s 0.3s, opacity 0.3s;
 }
+
 .fadeIn {
-  opacity: 1;
-  width: 100px;
-  height: 100px;
-  transition: width 0.3s, height 0.3s, opacity 0.3s 0.3s;
+    opacity: 1;
+    width: 100px;
+    height: 100px;
+    transition: width 0.3s, height 0.3s, opacity 0.3s 0.3s;
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
+    width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: white;
+    background: white;
 }
 
 ::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  background: black;
+    border-radius: 10px;
+    background: black;
+}
+
+.pop-up {
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    top: 50%;
+    height: 90%;
+    width: 90%;
+    transform: translate(-50%, -50%);
+}
+
+@screen sm {
+    .pop-up {
+        height: 90%;
+        width: 90%;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
