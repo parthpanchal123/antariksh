@@ -95,7 +95,7 @@ export default function Home() {
                   </button>
                 </Link>
                 <span>
-        <ChatBoxButton showChat={showChat} setShowChat={setShowChat}/>
+        {/*<ChatBoxButton showChat={showChat} setShowChat={setShowChat}/>*/}
       </span>
               </div>
             </div>
