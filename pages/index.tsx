@@ -95,7 +95,8 @@ export default function Home() {
                   </button>
                 </Link>
                 <span>
-        {/*<ChatBoxButton showChat={showChat} setShowChat={setShowChat}/>*/}
+                  {/*Disabling this since API key credits expired*/}
+                  {/*<ChatBoxButton showChat={showChat} setShowChat={setShowChat}/>*/}
       </span>
               </div>
             </div>
