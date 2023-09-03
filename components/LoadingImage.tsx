@@ -1,5 +1,7 @@
+"use client"
 import { useState } from "react";
-import Image from 'next/legacy/image'
+import Image from "next/image"
+import "../styles/globals.css"
 
 const LoadingImage = (props: any) => {
     const [showImage, setShowImage] = useState(false);
@@ -12,7 +14,7 @@ const LoadingImage = (props: any) => {
         <div className="imageWrapper">
             <div
                 className={["rounded-lg loaderWrapper",!showImage ? 'fadeIn' : 'fadeOut'].join(' ')}
-                // style={{width: `${props.width}`,height: `${props.height}`}}
+                style={{width: `${props.width}`,height: `${props.height}`}}
                 style={{width: "100%", height:"95%" }}
             >
                 <Image

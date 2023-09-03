@@ -23,7 +23,6 @@ const ChatList = ({chatData}:any) => {
                         </div>
                     </div>
                 </div> : summary.from === "me" ? <div id={summary.id} className={"flex flex-row-reverse m-2 gap-x-2"}>
-                    {/*<Image src="/bitmoji.svg" className="w-10 h-10 rounded-md border-2" alt={"Temp"} width={8} height={8}/>*/}
                     <div className="bg-blue-100 drop-shadow-2xl p-2 rounded-lg rounded-tr-none">
                         <p className="text-black text-sm">
                              {
