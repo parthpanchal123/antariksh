@@ -3,28 +3,39 @@ import LoadingImage from "./LoadingImage";
 const DateImage = (props: any) => {
   return (
     <div
-      className="relative rounded-md w-full max-w-xs ml-auto mr-auto flex items-start justify-start text-left bg-cover bg-center shadow-md transition duration-500 ease-in-out transform hover:-translate-y-1 cursor-pointer"
+      className="relative w-full aspect-square md:aspect-[4/3] rounded-[2rem] overflow-hidden group cursor-pointer border border-dark/50 bg-dark/30 hover:border-accent hover:shadow-[0_0_30px_rgba(123,97,255,0.2)] transition-all duration-500"
       key={props.index}
       onClick={() => props.click()}
     >
-      <LoadingImage
-        src={props.image}
-        width="320"
-        height="242"
-        classes="rounded-lg cursor-pointer"
-        click={() => props.click()}
-      />
-      <div className="absolute rounded-md top-0 mt-0 right-0 bottom-0 left-0 bg-gradient-to-b from-transparent to-gray-900"></div>
-      <div className="absolute top-0 right-0 left-0 mx-2 mt-2 flex justify-end rounded-md">
-        <span className="text-xs rounded-sm bg-indigo-600 text-white px-5 py-2 uppercase hover:bg-white hover:text-indigo-600 transition ease-in-out duration-500">
-          {props.date + " " + props.month + "," + " "+ props.year}
+      {/* Fallback pattern / Loading Background */}
+      <div className="absolute inset-0 bg-dark/50 z-0"></div>
+
+      {/* Background Image Loading */}
+      {props.image && (
+        <img
+          src={props.image}
+          alt={props.title}
+          className="absolute inset-0 w-full h-full object-cover z-10 transition-transform duration-700 group-hover:scale-110"
+          loading="lazy"
+        />
+      )}
+
+      {/* Heavy Cinematic Gradient Overlay */}
+      <div className="absolute inset-0 z-20 bg-gradient-to-t from-[#0A0A14] via-[#0A0A14]/40 to-transparent"></div>
+
+      {/* Date Badge */}
+      <div className="absolute top-4 right-4 z-30">
+        <span className="font-mono text-[10px] font-bold tracking-widest bg-dark/80 backdrop-blur-md text-accent border border-accent/20 px-3 py-1.5 rounded-full uppercase">
+          {props.date} {props.month} {props.year}
         </span>
       </div>
-      <main className="absolute p-5 z-10 bottom-0">
-        <span className="text-md tracking-tight font-medium leading-7 font-regular text-white ">
+
+      {/* Content Foot */}
+      <div className="absolute bottom-0 left-0 w-full p-6 z-30">
+        <h3 className="font-sans font-bold text-lg md:text-xl text-primary leading-tight line-clamp-2">
           {props.title}
-        </span>
-      </main>
+        </h3>
+      </div>
     </div>
   );
 };

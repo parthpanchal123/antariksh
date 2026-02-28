@@ -1,175 +1,55 @@
-/* ./styles/globals.css */
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap");
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@components {
-}
-
-* {
-    box-sizing: border-box;
-}
-
-html {
-    width: 100%;
-    height: 100%;
-}
-
-body {
-    width: 100%;
-    height: 100%;
-    overflow-x: hidden;
-}
-
-.home-cover {
-    background-image: url("../public/space.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: bottom left;
-}
-
-.iss-cover {
-    background-image: url("../public/iss.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: top right;
-}
-
-/*.resimg {*/
-/*    position: absolute;*/
-/*    top: 50%;*/
-/*    left: 50%;*/
-/*    width: 100%;*/
-/*    transform: translate(-50%, -50%);*/
-/*}*/
-
-/* Style for Medium Screen */
-@media (max-width: 767px) {
-    .resimg {
-        width: 100px;
-        margin-top: 95px;
-    }
-}
-
-@keyframes float {
-    0% {
-        /* box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6); */
-        transform: translatey(0px);
-    }
-    50% {
-        /* box-shadow: 0 25px 15px 0px rgba(0, 0, 0, 0.2); */
-        transform: translatey(10px);
-    }
-    100% {
-        /* box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6); */
-        transform: translatey(0px);
-    }
-}
-
-#space {
-    transform: translatey(0px);
-    animation: float 4s ease-in-out infinite;
-    /* box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6); */
-}
-
 @layer base {
-    @font-face {
-        font-family: "Poppins";
-    }
+  body {
+    @apply bg-background text-primary selection:bg-accent selection:text-white;
+  }
 }
 
-@-moz-keyframes spin {
-    100% {
-        -moz-transform: rotate(360deg);
-    }
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
-@-webkit-keyframes spin {
-    100% {
-        -webkit-transform: rotate(360deg);
-    }
+/* Base interactive transitions */
+.magnet-btn {
+  @apply relative overflow-hidden inline-flex items-center justify-center font-bold text-center transition-all duration-300;
+  border-radius: 2rem;
 }
 
-@keyframes spin {
-    100% {
-        -webkit-transform: rotate(360deg);
-        transform: rotate(360deg);
-    }
+.magnet-btn::before {
+  content: "";
+  @apply absolute inset-0 bg-white/10 translate-y-[100%] transition-transform duration-300 ease-out z-0;
 }
 
-.imageWrapper {
-    max-width: 100%;
-    max-height: 100%;
-    position: relative;
-    text-align: center;
+.magnet-btn:hover {
+  transform: scale(1.03);
+  transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-.loaderWrapper {
-    max-width: 100%;
-    max-height: 100%;
-    background-color: black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    padding: 30%;
-}
-
-.spinAnimation {
-    animation: spin 4s linear infinite;
-}
-
-.fadeOut {
-    opacity: 0;
-    width: 0;
-    height: 0;
-    transition: width 0.3s 0.3s, height 0.3s 0.3s, opacity 0.3s;
-}
-
-.fadeIn {
-    opacity: 1;
-    width: 100px;
-    height: 100px;
-    transition: width 0.3s, height 0.3s, opacity 0.3s 0.3s;
+.magnet-btn:hover::before {
+  transform: translateY(0);
 }
 
 ::-webkit-scrollbar {
-    width: 10px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-    background: white;
+  background: #0A0A14;
 }
 
 ::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    background: black;
+  background: #18181B;
+  border-radius: 4px;
 }
 
-.pop-up {
-    position: absolute;
-    z-index: 1;
-    left: 50%;
-    top: 50%;
-    height: 90%;
-    width: 90%;
-    transform: translate(-50%, -50%);
-}
-
-@screen sm {
-    .pop-up {
-        height: 90%;
-        width: 90%;
-    }
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+::-webkit-scrollbar-thumb:hover {
+  background: #7B61FF;
 }
