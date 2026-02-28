@@ -7,10 +7,12 @@ export interface iotd_props {
   error: string;
   img_data: {
     url: string;
-    copyright: string;
+    copyright?: string;
     title: string;
     explanation: string;
-    hdurl: string;
+    hdurl?: string;
+    media_type?: string;
+    date?: string;
   };
 }
 
